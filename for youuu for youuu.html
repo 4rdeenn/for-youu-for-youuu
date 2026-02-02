@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Baby ❤️</title>
+
+<style>
+  body {
+    background: linear-gradient(135deg, #f7c6d9, #fbeee6);
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 360px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 { color: #d16ba5; margin-bottom: 15px; }
+  p { color: #444; font-size: 16px; line-height: 1.6; }
+
+  button {
+    margin-top: 15px;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    background: #d16ba5;
+    color: white;
+    cursor: pointer;
+  }
+  button:hover { background: #b4558a; }
+
+  #loveMessage, #loveGif, #audioPlayer, #btn2, #secondPage {
+    display: none;
+    margin-top: 20px;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+  }
+
+  .messageBox {
+    width: 100%;
+    height: 300px;
+    padding: 15px;
+    border-radius: 15px;
+    border: 2px solid #d16ba5;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-y: auto;
+    text-align: center; /* center all text horizontally */
+    color: #444;
+    background: #fff7fb;
+    margin-top: 15px;
+  }
+
+  .heart {
+    position: absolute;
+    font-size: 24px;
+    color: #ff6b81;
+    animation: floatUp 4s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-600px) scale(1.5); opacity: 0; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- First Page -->
+<div class="card" id="firstPage">
+  <h1>HI BABYYY ❤️</h1>
+
+  <p id="intro">
+    I remembered I was a programmer.<br>
+    Click the button when you’re ready heheheheh ˚ʚ♡ɞ˚
+  </p>
+
+  <button id="btn">Tis da button</button>
+
+  <!-- First message -->
+  <p id="loveMessage">
+    I love you so muchieeee, I hope you had a good day todayy.
+    <br><br>
+    If not I hope this would make it a little better.˚˖𓍢ִ໋❀
+  </p>
+
+  <!-- GIF -->
+  <img id="loveGif" src="https://media1.tenor.com/m/2BrMVhEIsgIAAAAC/mocha-bear-kiss-bear-kiss.gif" alt="cute bear kiss gif">
+
+  <!-- SoundCloud audio player -->
+  <div id="audioPlayer">
+    <iframe
+      width="100%"
+      height="166"
+      scrolling="no"
+      frameborder="no"
+      allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/sixpence-none-the-richer-official/kiss-me-1&color=%23d16ba5&auto_play=true&hide_related=false&show_comments=false&show_user=true&show_reposts=false">
+    </iframe>
+  </div>
+
+  <!-- Second button -->
+  <button id="btn2">Press da button again, I got something to whisper 💌</button>
+</div>
+
+<!-- Second Page -->
+<div class="card" id="secondPage">
+  <h1>ꫂ᭪݁ Dearest, Yanna ꫂ᭪݁</h1>
+  
+  <!-- Smaller GIF -->
+  <img src="https://media1.tenor.com/m/2BrMVhEIsgIAAAAC/mocha-bear-kiss-bear-kiss.gif" 
+       alt="cute bear kiss gif" 
+       style="width:200px; height:auto; margin: 10px auto; display:block; border-radius:15px;">
+  
+  <!-- Smaller audio player -->
+  <div id="audioPlayerSecond" style="width:100%; max-width:250px; margin: 10px auto;">
+    <iframe
+      width="100%"
+      height="80"
+      scrolling="no"
+      frameborder="no"
+      allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/sixpence-none-the-richer-official/kiss-me-1&color=%23d16ba5&auto_play=true&hide_related=false&show_comments=false&show_user=true&show_reposts=false">
+    </iframe>
+  </div>
+
+  <!-- Static, scrollable love message -->
+  <div class="messageBox">
+I know you're tired but I hope your day was still decent. I hope you know that I love you even more than words could express and that I am so proud of you. Thank you for being the reason I want to wake up each morning. You mean more than the world to me, so please keep going and trying your best. You're doing great my baby! I love you so much and I miss you. I'll see you tomorrowww𑣲𝑨
+  </div>
+</div>
+
+<script>
+  const button1 = document.getElementById("btn");
+  const button2 = document.getElementById("btn2");
+  const intro = document.getElementById("intro");
+  const loveMessage = document.getElementById("loveMessage");
+  const loveGif = document.getElementById("loveGif");
+  const audioPlayer = document.getElementById("audioPlayer");
+  const firstPage = document.getElementById("firstPage");
+  const secondPage = document.getElementById("secondPage");
+
+  // Click first button
+  button1.addEventListener("click", function() {
+    intro.style.display = "none";
+    button1.style.display = "none";
+
+    loveMessage.style.display = "block";
+
+    setTimeout(() => {
+      loveGif.style.display = "block";
+      audioPlayer.style.display = "block";
+      button2.style.display = "inline-block"; // show second button
+      spawnHearts();
+    }, 1000);
+  });
+
+  // Click second button → show second page
+  button2.addEventListener("click", function() {
+    firstPage.style.display = "none"; // hide first page
+    secondPage.style.display = "block"; // show second page
+    spawnHearts();
+  });
+
+  // Floating hearts
+  function spawnHearts() {
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+      heart.innerText = "❤️";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+  }
+  setInterval(spawnHearts, 1000);
+</script>
+
+</body>
+</html>
